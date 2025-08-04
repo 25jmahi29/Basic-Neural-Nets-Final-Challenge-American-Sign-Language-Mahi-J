@@ -3,7 +3,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import  confusion_matrix, classification_report
 from sklearn.model_selection import train_test_split
 from collections import defaultdict
-
+# American Sign Language translation --> Englist to Sign Lang
 # Load the training dataset
 train_data = pd.read_csv('sign_mnist_13bal_train.csv')
 
@@ -11,6 +11,9 @@ train_data = pd.read_csv('sign_mnist_13bal_train.csv')
 X_train = train_data.drop('class', axis=1)  # Features (all columns except the first one)
 X_train = X_train / 255.0
 y_train = train_data['class']   # Target (first column)
+
+#Spliting data 
+X_train, X_validate, y_train, y_validate = train_test_split(X_train, y_train, test_size=20, random_state=2, stratify = y_train)
 
 # Load the testing dataset
 test_data = pd.read_csv('sign_mnist_13bal_test.csv')
@@ -23,7 +26,7 @@ y_test = test_data['class']   # Target (first column)
 # Use this line to get you started on adding a validation dataset
 #X_train, X_validate, y_train, y_validate = train_test_split(X_train, y_train, test_size=10, random_state=0)
 
-neural_net_model = MLPClassifier( hidden_layer_sizes=(8),random_state=42,tol=0.005)
+neural_net_model = MLPClassifier( hidden_layer_sizes=(20),random_state=42,tol=0.005)
 
 neural_net_model.fit(X_train, y_train)
 # Determine model architecture 
@@ -68,3 +71,5 @@ overall_accuracy = overall_correct / len(y_test)*100
 print(f"Overall Test Accuracy: {overall_accuracy:3.1f}%")
 overall_training_accuracy = correct_counts_training / total_counts_training*100
 print(f"Overall Training Accuracy: {overall_training_accuracy:3.1f}%")
+
+print("The most misidentified letters are from", )
