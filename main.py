@@ -26,7 +26,7 @@ X_test = X_test / 255.0
 y_test = test_data['class']  # Target (first column)
 
 # Use this line to get you started on adding a validation dataset
-X_train, X_validate, y_train, y_validate = train_test_split(X_train, y_train, test_size=10, random_state=2)
+X_train, X_validate, y_train, y_validate = train_test_split(X_train, y_train, test_size=0.2, random_state=2, stratify=y_train)
 
 neural_net_model = MLPClassifier(hidden_layer_sizes=(20),
                                  random_state=42,
