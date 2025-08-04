@@ -80,11 +80,11 @@ class_ids = sorted(total_counts.keys())
 
 print("Confusion Matrix:")
 print(f"{'':9s}", end='')
-for label in class_id:
+for label in class_ids:
     print(f"Class {label:2d} ", end='')
 print()  # Newline for next row
 
 for i, row in enumerate(conf_matrix):
-    print(f"Class {class_id[i]}:", " ".join(f"{num:8d}" for num in row))
+    print(f"Class {class_ids[i]:2d}:", " ".join(f"{num:8d}" for num in row))
 
 
