@@ -26,7 +26,7 @@ y_test = test_data['class']   # Target (first column)
 # Use this line to get you started on adding a validation dataset
 #X_train, X_validate, y_train, y_validate = train_test_split(X_train, y_train, test_size=10, random_state=0)
 
-neural_net_model = MLPClassifier( hidden_layer_sizes=(128, 64),random_state=42,tol=0.005)
+neural_net_model = MLPClassifier( hidden_layer_sizes=(20),random_state=42,tol=0.005)
 
 neural_net_model.fit(X_train, y_train)
 # Determine model architecture 
@@ -70,6 +70,21 @@ print(f"----------")
 overall_accuracy = overall_correct / len(y_test)*100
 print(f"Overall Test Accuracy: {overall_accuracy:3.1f}%")
 overall_training_accuracy = correct_counts_training / total_counts_training*100
-print(f"Overall Training Accuracy: {overall_training_accuracy:3.1f}%")
+print(f"Overall Training Accuracy: {overall_training_accuracy:3.1f}%\n")
 
-print("The most misidentified letters are from", )
+
+
+conf_matrix = confusion_matrix(y_test, y_pred)
+class_ids = sorted(total_counts.keys())
+
+
+print("Confusion Matrix:")
+print(f"{'':9s}", end='')
+for label in class_id:
+    print(f"Class {label:2d} ", end='')
+print()  # Newline for next row
+
+for i, row in enumerate(conf_matrix):
+    print(f"Class {class_id[i]}:", " ".join(f"{num:8d}" for num in row))
+
+
