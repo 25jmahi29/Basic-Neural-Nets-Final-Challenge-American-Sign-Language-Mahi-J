@@ -26,7 +26,7 @@ y_test = test_data['class']   # Target (first column)
 # Use this line to get you started on adding a validation dataset
 #X_train, X_validate, y_train, y_validate = train_test_split(X_train, y_train, test_size=10, random_state=0)
 
-neural_net_model = MLPClassifier( hidden_layer_sizes=(20),random_state=42,tol=0.005)
+neural_net_model = MLPClassifier( hidden_layer_sizes=(128, 64),random_state=42,tol=0.005)
 
 neural_net_model.fit(X_train, y_train)
 # Determine model architecture 
