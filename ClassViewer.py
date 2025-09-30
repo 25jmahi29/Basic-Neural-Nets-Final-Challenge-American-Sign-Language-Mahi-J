@@ -8,6 +8,7 @@ df = pd.read_csv('sign_mnist_13bal_train.csv')
 # which class to display
 class_number = 3
 
+
 # Filter the dataset for one class, and select the first 10 rows
 class_0_df = df[df['class'] == class_number].head(10)
 
